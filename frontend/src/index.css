@@ -1,0 +1,65 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: #222;
+}
+
+.app-container { width: 100%; display: flex; justify-content: center; }
+
+.card {
+  background: #fff;
+  width: 440px;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1 { font-size: 22px; margin-bottom: 16px; color: #0a66c2; }
+
+.field { display: block; margin: 12px 0; }
+.field > span { display: block; font-size: 13px; margin-bottom: 6px; color: #555; }
+.field input[type="file"],
+.field input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 10px;
+}
+
+.row { display: flex; gap: 10px; }
+.half { flex: 1; }
+
+button {
+  margin-top: 10px;
+  background: #0a66c2;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.download-link {
+  margin-top: 16px;
+  background: #e9f7ef;
+  border: 1px solid #c3e6cb;
+  padding: 12px;
+  border-radius: 10px;
+}
+.download-link a { color: #2a7b46; word-break: break-all; }
+.copy-btn {
+  margin-left: 8px;
+  background: #2a7b46;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

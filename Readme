@@ -1,0 +1,42 @@
+# Secure File Share (No DB, AES-256-CTR)
+
+A minimal file-sharing system:
+- Upload → server encrypts file (AES-256-CTR)
+- Returns shareable link
+- Link enforces expiry (hours) and max download count
+- Server decrypts on-the-fly on download
+- All metadata stored in-memory (no DB)
+
+## Structure
+file-sharing-project/
+backend/
+server.js
+routes/
+upload.js
+download.js
+utils/
+crypto.js
+fileStore.js
+uploads/
+package.json
+frontend/
+public/
+index.html
+src/
+App.jsx
+main.jsx
+index.css
+package.json
+
+## Run
+npm run dev 
+
+### Backend
+cd backend
+npm install
+npm run dev
+
+## Notes
+- In-memory metadata resets on server restart.
+- AES-256-CTR chosen for streaming simplicity. For integrity/authentication, consider AES-256-GCM and store the auth tag.
+- Increase file size limits or switch storage to S3 for production.
