@@ -9,24 +9,23 @@ const downloadRoute = require("./routes/download");
 
 const app = express();
 
-// ✅ Allow multiple origins (local + production frontend)
+// ✅ Allowed origins: local dev + deployed frontend
 const allowedOrigins = [
-  "http://localhost:5173",                  // Vite local dev
-  "http://localhost:3000",                  // React default dev
-  process.env.FRONTEND_URL,                 // Production frontend (Render/Netlify/Vercel)
-].filter(Boolean); // removes undefined
+  "http://localhost:5173",           // Vite dev server
+  "https://file-sharing.onrender.com", // your backend domain (optional)
+  process.env.FRONTEND_URL            // production frontend (if you set it)
+];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
+  credentials: true
+}));
 
 app.use(express.json());
 
