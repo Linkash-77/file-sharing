@@ -17,13 +17,14 @@ const fileStore = new Map();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "https://your-frontend-domain.com",
+      "http://localhost:5173", // local frontend
     ],
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
 );
+
+
 app.use(express.json());
 
 // ---------- Multer setup ----------
