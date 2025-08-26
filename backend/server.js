@@ -9,8 +9,25 @@ const downloadRoute = require("./routes/download");
 
 const app = express();
 
-// CORS for Vite dev server
-app.use(cors({ origin: process.env.FRONTEND_URL || "http://localhost:5173" }));
+// ✅ Allow multiple origins (local + production frontend)
+const allowedOrigins = [
+  "http://localhost:5173",                  // Vite local dev
+  "http://localhost:3000",                  // React default dev
+  process.env.FRONTEND_URL,                 // Production frontend (Render/Netlify/Vercel)
+].filter(Boolean); // removes undefined
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
+
 app.use(express.json());
 
 // Ensure uploads dir exists

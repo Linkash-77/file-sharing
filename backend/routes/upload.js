@@ -56,8 +56,11 @@ router.post("/", upload.single("file"), async (req, res) => {
     store.save(meta);
 
     // Shareable link: server handles decryption (key stays server-side for this demo)
-const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
-const downloadLink = `${BASE_URL}/download/${fileId}`;
+    const BASE_URL =
+      process.env.BASE_URL ||
+      `http://localhost:${process.env.PORT || 5000}`;
+    const downloadLink = `${BASE_URL}/download/${fileId}`;
+
 
     res.json({
       success: true,
