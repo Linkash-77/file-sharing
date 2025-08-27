@@ -18,6 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // local frontend
+      "https://secure-file-share-frontend.vercel.app",
     ],
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
