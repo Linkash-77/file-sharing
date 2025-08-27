@@ -17,13 +17,15 @@ const fileStore = new Map();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // local frontend
+      "http://localhost:5173",
       "https://file-sharing-ashen.vercel.app",
+      "https://secure-file-share-frontend.vercel.app",
     ],
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
 );
+
 
 
 app.use(express.json());
